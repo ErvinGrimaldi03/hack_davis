@@ -1,3 +1,6 @@
+import FeatStory1Img from './images/featStory1.png'
+import FeatStory2Img from './images/featStory2.png'
+
 // Sample data for stories
 const storiesData = [
     {
@@ -6,7 +9,7 @@ const storiesData = [
       date: "2025-04-15",
       category: "Environment",
       topic: "Sustainability",
-      imageUrl: "https://via.placeholder.com/400x300",
+      imageUrl: FeatStory1Img,
       featured: true,
       content: "Renewable energy sources are becoming increasingly important as we move towards a more sustainable future. This article explores the latest developments in solar, wind, and hydro technologies, as well as the policies being implemented globally to encourage their adoption. With climate change accelerating, the shift to renewable energy has never been more critical."
     },
@@ -16,7 +19,7 @@ const storiesData = [
       date: "2025-04-12",
       category: "Technology",
       topic: "AI",
-      imageUrl: "https://via.placeholder.com/400x300",
+      imageUrl: FeatStory2Img,
       featured: true,
       content: "AI continues to transform industries across the globe. From healthcare to transportation, discover how machine learning algorithms are revolutionizing our world. This article examines recent breakthroughs in natural language processing, computer vision, and reinforcement learning, highlighting their potential impact on society and the economy."
     },
@@ -26,7 +29,7 @@ const storiesData = [
       date: "2025-04-10",
       category: "Health",
       topic: "Wellbeing",
-      imageUrl: "https://via.placeholder.com/400x300",
+      imageUrl: FeatStory2Img,
       featured: true,
       content: "Studies show that regular meditation practice can reduce stress, improve focus, and promote emotional well-being. Learn how to incorporate mindfulness into your daily routine with these simple techniques. This article explores different meditation styles, their origins, and the scientific evidence supporting their health benefits."
     },
@@ -36,7 +39,7 @@ const storiesData = [
       date: "2025-04-08",
       category: "Space",
       topic: "Exploration",
-      imageUrl: "https://via.placeholder.com/400x300",
+      imageUrl: FeatStory2Img,
       featured: true,
       content: "As missions to Mars become more frequent, scientists are uncovering fascinating details about the red planet. This article examines recent discoveries and what they mean for future exploration. From water ice beneath the surface to evidence of ancient rivers, our understanding of Mars is evolving rapidly, paving the way for potential human settlement in the coming decades."
     },
@@ -46,7 +49,7 @@ const storiesData = [
       date: "2025-04-05",
       category: "Business",
       topic: "Workplace",
-      imageUrl: "https://via.placeholder.com/400x300",
+      imageUrl: FeatStory2Img,
       featured: true,
       content: "The pandemic accelerated the shift to remote work, and many companies are continuing to embrace flexible work arrangements. Discover the benefits and challenges of this new work paradigm, from increased productivity and work-life balance to the struggle of maintaining company culture and preventing burnout in a distributed workforce."
     },

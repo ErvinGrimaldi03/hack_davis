@@ -143,7 +143,7 @@
   }
   
   .card-back {
-    background: #fff;
+    background: #025376;
     transform: rotateY(180deg);
     display: flex;
     flex-direction: column;
@@ -158,14 +158,18 @@
     margin-top: auto;
     padding: 0.5rem 1rem;
     border: none;
-    background: #007bff;
-    color: white;
+    background: white;
+    color: #025376;
     border-radius: 4px;
     cursor: pointer;
+    transition-duration: 0.2s;
   }
   
   .read-more:hover {
-    background: #0056b3;
+    background: #023A53;
+    color: white;
+    border: 1px solid;
+    border-color: white;
   }
   
   /* Load More Button */
