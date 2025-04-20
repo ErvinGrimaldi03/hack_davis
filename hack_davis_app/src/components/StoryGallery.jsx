@@ -35,7 +35,6 @@ function StoryCard({ story, onSelect }) {
   );
 }
 
-// Modal Component which is the same from the carousel
 function Modal({ story, onClose }) {
   return (
     <div className="modal-overlay">

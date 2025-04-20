@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './FeaturedStoriesCarousel.css';
+import './Modal.css';
 
 export default function FeaturedStoriesCarousel({ stories = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,8 +50,11 @@ export default function FeaturedStoriesCarousel({ stories = [] }) {
               <div className="featured-category">{story.category}</div>
             </div>
             <div className="featured-info">
-              <div className="featured-location">Palisades, CA</div>
-              <div className="featured-quote">"{story.content.substring(0, 60)}..." <span className="featured-author">-Anonymous, 45</span></div>
+              <div className="featured-location">{story.location || "Palisades, CA"}</div>
+              <div className="featured-quote">
+                "{story.shortQuote || story.content.substring(0, 60)}..." 
+                <span className="featured-author">-{story.author || "Anonymous, 45"}</span>
+              </div>
               <button 
                 className="featured-learn-more" 
                 onClick={() => handleLearnMore(story)}
@@ -79,10 +83,56 @@ function Modal({ story, onClose }) {
     <div className="modal-overlay">
       <div className="modal-content">
         <button className="modal-close" onClick={onClose}>&times;</button>
-        <h2>{story.title}</h2>
-        <p className="modal-meta">{story.date} • {story.category}</p>
-        <div className="modal-body">{story.content}</div>
+        
+        <div className="modal-header">
+          <h2>{story.title}</h2>
+          <p className="modal-meta">
+            {story.date} • {story.category} • {story.location || "Palisades, CA"}
+          </p>
+          {story.tags && story.tags.length > 0 && (
+            <div className="modal-tags">
+              {story.tags.map((tag, index) => (
+                <span key={index} className="tag">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+        
+        <div className="modal-body">
+          {/* Split the content into paragraphs */}
+          {story.content.split('\n\n').map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+        
+        {/* Resources section - only shown if story has resources */}
+        {story.resources && story.resources.length > 0 && (
+          <div className="modal-resources">
+            <h3>Resources</h3>
+            <div className="resource-links">
+              {story.resources.map((resource, index) => (
+                <div key={index} className="resource-link-item">
+                  <a 
+                    href={resource.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="resource-title"
+                  >
+                    {resource.name} <span className="arrow">↗</span>
+                  </a>
+                  {resource.description && (
+                    <p className="resource-description">{resource.description}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        
+        <div className="modal-footer">
+          <p className="author-info">Story shared by: {story.author || "Anonymous, 45"}</p>
+        </div>
       </div>
     </div>
   );
-}
+}  
