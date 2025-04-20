@@ -116,8 +116,9 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    height: 40%;
     padding: 0.5rem;
-    background: rgba(0, 0, 0, 0.5);
+    background: #025376;
     color: white;
   }
   

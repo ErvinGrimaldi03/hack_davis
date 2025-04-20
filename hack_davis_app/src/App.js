@@ -16,6 +16,9 @@ function App() {
     <div className="App">
       <NavBar></NavBar>
       <main>
+        <section className='about-section'>
+          <About/>
+        </section>
         <section className="featured-section">
           <h2>Featured Stories</h2>
           <FeaturedStoriesCarousel stories={featuredStories} />
