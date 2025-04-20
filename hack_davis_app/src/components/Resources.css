@@ -1,0 +1,121 @@
+.resources-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .resources-title {
+    color: #024a68;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .resources-title-underline {
+    width: 30%;
+    height: 3px;
+    background-color: #024a68;
+    margin-bottom: 2rem;
+  }
+  
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .resource-card {
+    display: flex;
+    align-items: center;
+    background-color: #e6eef1;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .resource-logo {
+    width: 80px;
+    height: 80px;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 0.5rem;
+  }
+  
+  .resource-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .resource-info {
+    flex-grow: 1;
+  }
+  
+  .resource-title {
+    color: #333;
+    font-size: 1.25rem;
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .resource-organization {
+    color: #555;
+    font-size: 1rem;
+    margin: 0 0 0.75rem 0;
+  }
+  
+  .resource-link {
+    color: #024a68;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .resource-link:hover {
+    text-decoration: underline;
+  }
+  
+  .arrow {
+    font-size: 1.1rem;
+    margin-left: 0.25rem;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .resources-title-underline {
+      width: 50%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .resource-card {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .resource-logo {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+    
+    .resources-title {
+      font-size: 1.8rem;
+    }
+  }

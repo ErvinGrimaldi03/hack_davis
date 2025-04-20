@@ -4,40 +4,23 @@ import './FeaturedStoriesCarousel.css';
 export default function FeaturedStoriesCarousel({ stories = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedStory, setSelectedStory] = useState(null);
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
 
   // Ensure stories is an array
   const storiesArray = Array.isArray(stories) ? stories : [];
   const total = storiesArray.length;
   
-  // Responsive visible count based on screen width
-  const getVisibleCount = () => {
-    if (windowWidth <= 480) return 1;
-    if (windowWidth <= 768) return 2;
-    return 3;
-  };
-  
-  const visibleCount = getVisibleCount();
+  // Show 2 stories at a time
+  const visibleCount = 2;
 
   const prev = () => {
-    let newIndex = currentIndex - visibleCount; 
-    if (newIndex < 0) newIndex = 0;
+    let newIndex = currentIndex - visibleCount;
+    if (newIndex < 0) newIndex = Math.max(0, total - visibleCount);
     setCurrentIndex(newIndex);
   };
-
-  // Add window resize listener
-  React.useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
   
   const next = () => {
     let newIndex = currentIndex + visibleCount;
-    if (newIndex > total - visibleCount) newIndex = Math.max(0, total - visibleCount);
+    if (newIndex >= total) newIndex = 0;
     setCurrentIndex(newIndex);
   };
 
@@ -45,50 +28,43 @@ export default function FeaturedStoriesCarousel({ stories = [] }) {
     return storiesArray.slice(currentIndex, currentIndex + visibleCount);
   };
 
-  return (
-    <div className="carousel-container">
-      <div className="controls">
-        <button 
-          onClick={prev} 
-          aria-label="Previous" 
-          disabled={currentIndex === 0}
-        >
-          &larr;
-        </button>
-        <button 
-          onClick={next} 
-          aria-label="Next" 
-          disabled={currentIndex >= total - visibleCount}
-        >
-          &rarr;
-        </button>
-      </div>
+  const handleLearnMore = (story) => {
+    setSelectedStory(story);
+  };
 
-      <div className="story-grid">
+  return (
+    <div className="featured-carousel-container">
+      <h1 className="featured-title">Featured Stories</h1>
+      <div className="title-underline"></div>
+      
+      <div className="featured-story-grid">
         {getVisibleStories().map(story => (
-          <div key={story.id} className="story-card">
-            <div className="card-inner">
-              <div className="card-front">
-                <img
-                  src={story.imageUrl}
-                  alt={story.title}
-                  className="card-image"
-                />
-                <div className="card-overlay">
-                  <h3 className="card-title">{story.title}</h3>
-                  <p className="card-meta">{story.date} • {story.category}</p>
-                </div>
-              </div>
-              <div
-                className="card-back"
-                onClick={() => setSelectedStory(story)}
+          <div key={story.id} className="featured-story-card">
+            <div className="featured-image-container">
+              <img
+                src={story.imageUrl}
+                alt={story.title}
+                className="featured-image"
+              />
+              <div className="featured-category">{story.category}</div>
+            </div>
+            <div className="featured-info">
+              <div className="featured-location">Palisades, CA</div>
+              <div className="featured-quote">"{story.content.substring(0, 60)}..." <span className="featured-author">-Anonymous, 45</span></div>
+              <button 
+                className="featured-learn-more" 
+                onClick={() => handleLearnMore(story)}
               >
-                <h3>{story.title}</h3>
-                <button className="read-more">Read More</button>
-              </div>
+                Click to learn more
+              </button>
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="featured-controls">
+        <button onClick={prev} className="featured-nav-btn">&lt;</button>
+        <button onClick={next} className="featured-nav-btn">&gt;</button>
       </div>
 
       {selectedStory && (

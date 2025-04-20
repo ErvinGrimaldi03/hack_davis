@@ -6,6 +6,7 @@ import Stories from './components/Stories';
 import StoryGallery from './components/StoryGallery';
 import BufferHeader from './components/BufferHeader';
 import storiesData from './storiesData';
+import Resources from './components/Resources';
 import FeaturedStoriesCarousel from './components/FeaturedStoriesCarousel';
 
 function App() {
@@ -21,12 +22,14 @@ function App() {
           <About/>
         </section>
         <section className="featured-section">
-          <h2>Featured Stories</h2>
           <FeaturedStoriesCarousel stories={featuredStories} />
         </section>
         
         <section className="gallery-section">
           <StoryGallery stories={storiesData} />
+        </section>
+        <section className='resources'>
+          <Resources/>
         </section>
       </main>
       <footer>

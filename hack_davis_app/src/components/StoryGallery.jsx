@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './StoryGallery.css';
 
-// Story Card Component - reusing the same style as carousel
+// Story Card Component - updated to match the FeaturedStories design
 function StoryCard({ story, onSelect }) {
   return (
     <div className="story-card">
       <div className="card-inner">
         <div className="card-front">
-          <img
-            src={story.imageUrl}
-            alt={story.title}
-            className="card-image"
-          />
+          <div className="card-image-container">
+            <img
+              src={story.imageUrl}
+              alt={story.title}
+              className="card-image"
+            />
+            <div className="card-category">{story.category}</div>
+          </div>
           <div className="card-overlay">
+            <div className="card-location">Palisades, CA</div>
             <h3 className="card-title">{story.title}</h3>
-            <p className="card-meta">{story.date} • {story.category}</p>
-            <span className="card-topic">{story.topic}</span>
+            <p className="card-quote">"{story.content.substring(0, 60)}..."</p>
+            <span className="card-topic">{story.topic || 'Story'}</span>
           </div>
         </div>
         <div
@@ -23,7 +27,8 @@ function StoryCard({ story, onSelect }) {
           onClick={() => onSelect(story)}
         >
           <h3>{story.title}</h3>
-          <button className="read-more">Read More</button>
+          <p className="card-excerpt">{story.content.substring(0, 120)}...</p>
+          <button className="read-more">Click to learn more</button>
         </div>
       </div>
     </div>
@@ -38,7 +43,7 @@ function Modal({ story, onClose }) {
         <button className="modal-close" onClick={onClose}>&times;</button>
         <h2>{story.title}</h2>
         <p className="modal-meta">{story.date} • {story.category}</p>
-        <div className="topic-tag">{story.topic}</div>
+        <div className="topic-tag">{story.topic || 'Story'}</div>
         <div className="modal-body">{story.content}</div>
       </div>
     </div>
@@ -56,7 +61,7 @@ function StoryGallery({ stories = [] }) {
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   
   // Get all unique topics from stories
-  const allTopics = ['All', ...new Set(stories.map(story => story.topic))];
+  const allTopics = ['All', ...new Set(stories.map(story => story.topic).filter(Boolean))];
   
   // Calculate visible count based on screen size
   function getInitialVisibleCount() {
@@ -79,7 +84,7 @@ function StoryGallery({ stories = [] }) {
   
   // Filter and sort stories
   useEffect(() => {
-    let result = [...stories]; // returns a shallow-copu of stories into result
+    let result = [...stories]; // returns a shallow-copy of stories into result
     
     // Filter by topic
     if (selectedTopic && selectedTopic !== 'All') {
@@ -132,7 +137,8 @@ function StoryGallery({ stories = [] }) {
   return (
     <div className="gallery-container">
       <div className="gallery-header">
-        <h2>All Stories</h2>
+        <h2 className="gallery-title">All Stories</h2>
+        <div className="gallery-title-underline"></div>
         
         <div className="gallery-filters">
           <div className="search-box">
