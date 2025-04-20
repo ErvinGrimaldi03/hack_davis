@@ -4,7 +4,7 @@ import NavBar from './components/Navbar';
 import About from './components/About'
 import Stories from './components/Stories';
 import StoryGallery from './components/StoryGallery';
-
+import BufferHeader from './components/BufferHeader';
 import storiesData from './storiesData';
 import FeaturedStoriesCarousel from './components/FeaturedStoriesCarousel';
 
@@ -17,6 +17,7 @@ function App() {
       <NavBar></NavBar>
       <main>
         <section className='about-section'>
+          <BufferHeader />
           <About/>
         </section>
         <section className="featured-section">
