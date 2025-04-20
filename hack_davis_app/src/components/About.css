@@ -1,0 +1,31 @@
+.About-h1{
+    text-decoration: underline;
+    text-align: left;
+    width: auto;
+    padding: 20px;
+}
+.image-header{
+    display: flex;
+    text-align: left;
+    align-items: flex-start;
+    gap: 1em;
+}
+.image-header img{
+    width: 150px;
+}
+.about-block-wrapper{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    gap: 1em;
+    justify-content: center;
+}
+.about-block{
+    text-align: inherit;
+    background-color: gray;
+    border-radius: 25px;
+    width: 400px;
+    height: 150px;
+}
+
+  
