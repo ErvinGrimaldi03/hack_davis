@@ -1,5 +1,5 @@
 import './About.css'
-import TestImage from "../images/logo192.png"
+import TestImage from "./images/logo512.png"
 
 function AboutHeader(){
     return(
